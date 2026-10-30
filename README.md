@@ -1,68 +1,78 @@
-Topic: NodeTS <br />
-Submission Date: 30 October 2026 <br />
-Time: 09:00 AM
-
-
-Please submit by pushing to your GitHub repository and creating a pull request to your mentor
-
-# Title: Task 6 - Shopping List API
+# Shopping List API
 
 ## Project Overview
-You are tasked to build a shopping list REST API that lets users manage the items they want to buy. The app allows users to add, view, update, and delete items from the shopping list.
+The Shopping List API is a RESTful API built with Node.js, TypeScript and Express.js. It allows users to create, view, update and delete shopping list items.
 
-## Use-case Scenario
+## Technologies Used
+- Node.js
+- TypeScript
+- Express.js
+- REST API
+- REST Client for API testing
 
- - Suppose you need to make a note of groceries before going to the store.
- - You make a shopping list consisting of items such as "Milk, Eggs, Bread.".
- - As you shop, you can check off items that you've purchased.
- - You can modify amounts (e.g., 2L of milk rather than 1).
- - You can remove items you do not need anymore.
+## Shopping Item Structure
+Each shopping item contains:
+- `id`: A unique identifier for the item.
+- `name`: The name of the shopping item.
+- `quantity`: The number of items required.
+- `purchased`: A Boolean value indicating whether the item has been purchased.
 
-The application should run as a NodeJS HTTP server with Typescript. Users must be able to interact with the application using API requests, e.g Postman.
+## API Endpoints
 
-## Core Features
- - Add an item
-   - Endpoint: POST /items
- - Get All items
-   - Endpoint: GET /items
- - Get a Single item by ID
-   - Endpoint: GET /items/:id
- - Update an item (name, quantity, purchased status, etc…)
-   - Endpoint: PUT /items/:id
- - Delete an item
-   - Endpoint: DELETE /items/:id
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/items` | Retrieve all shopping items |
+| POST | `/items` | Create a shopping item |
+| GET | `/items/:id` | Retrieve one item by ID |
+| PUT | `/items/:id` | Update a shopping item |
+| DELETE | `/items/:id` | Delete a shopping item |
 
-## Task Breakdown
+## Validation and Error Handling
+The API validates incoming data and returns appropriate HTTP status codes:
+- `200 OK`: Request completed successfully.
+- `201 Created`: Shopping item created successfully.
+- `204 No Content`: Item deleted successfully.
+- `400 Bad Request`: Invalid input or item ID.
+- `404 Not Found`: Item or route does not exist.
+- `500 Internal Server Error`: Unexpected server error.
 
-### Sprint 1: Project Setup
-   - Setup Node.js + TypeScript project (tsconfig.json, package.json)
-   - Create a basic HTTP server (server.ts)
+## Installation and Setup
 
-### Sprint 2: Shopping List Items CRUD
-   - Create Item type in models/item.ts.
-   - Store items in memory (array of objects).
-   - Implement GET /items → return all items.
-   - Implement POST /items → create a new item.
-   - Return validation errors if fields are missing.
+1. Clone or download the project.
+2. Open the project folder in a terminal.
+3. Install dependencies:
 
-### Sprint 3: Item Details & Updates
-   - Implement GET /items/:id → return item by ID.
-   - Implement PUT /items/:id → update name, quantity, or purchased status.
-   - Return 404 if item not found.
-   - Add validation.
+   ```bash
+   npm install
+   ```
 
-### Sprint 4: Delete Items
-   - Implement DELETE /items/:id.
-   - Return 204 No Content if deleted, 404 if not found.
+4. Start the development server:
 
-### Sprint 5: Error Handling & Response Consistency
-   - Create a reusable error handler (400 for bad input, 404 for not found).
-   - Ensure all responses are JSON with a consistent shape.
+   ```bash
+   npm run dev
+   ```
 
-### Sprint 6: Testing & Documentation
-   - Test endpoints with Postman.
-   - Document API endpoints in a README.md.
+5. The API runs at `http://localhost:3000`.
 
-### Deliverables
-   1. Readme file
-   2. Project
+## Build and Run
+
+Build the TypeScript project:
+
+```bash
+npm run build
+```
+
+Run the compiled application:
+
+```bash
+npm start
+```
+
+## Testing
+The API was tested using the VS Code REST Client extension. The `requests.http` file contains requests for creating, retrieving, updating and deleting shopping items, as well as testing invalid input and missing items.
+
+## Data Storage
+This project uses an in-memory array to store shopping items. Data resets when the server restarts.
+
+## Author
+Princess Tau

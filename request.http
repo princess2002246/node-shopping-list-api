@@ -1,0 +1,48 @@
+
+### 1. Add multiple shopping items
+POST http://localhost:3000/items
+Content-Type: application/json
+
+[
+  {
+    "name": "Banana",
+    "quantity": 5,
+    "purchased": false
+  },
+  {
+    "name": "Apple",
+    "quantity": 10,
+    "purchased": false
+  },
+  {
+    "name": "Orange",
+    "quantity": 8,
+    "purchased": false
+  }
+]
+
+###
+
+### 2. Get all shopping items
+GET http://localhost:3000/items
+
+###
+
+### 3. Get one item by ID
+GET http://localhost:3000/items/2
+
+###
+
+### 4. Update an item
+PUT http://localhost:3000/items/1
+Content-Type: application/json
+
+{
+  "quantity": 3,
+  "purchased": true
+}
+
+###
+
+### 5. Delete an item
+DELETE http://localhost:3000/items/3
